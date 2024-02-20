@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>rmgeditor.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\neutral_castle.png" />
+    <None Remove="Resources\neutral_town.png" />
+    <None Remove="Resources\player1_castle.png" />
+    <None Remove="Resources\player1_town.png" />
+    <None Remove="Resources\player2_castle.png" />
+    <None Remove="Resources\player2_town.png" />
+    <None Remove="Resources\player3_castle.png" />
+    <None Remove="Resources\player3_town.png" />
+    <None Remove="Resources\player4_castle.png" />
+    <None Remove="Resources\player4_town.png" />
+    <None Remove="Resources\player5_castle.png" />
+    <None Remove="Resources\player5_town.png" />
+    <None Remove="Resources\player6_castle.png" />
+    <None Remove="Resources\player6_town.png" />
+    <None Remove="Resources\player7_castle.png" />
+    <None Remove="Resources\player7_town.png" />
+    <None Remove="Resources\player8_castle.png" />
+    <None Remove="Resources\player8_town.png" />
+    <None Remove="Resources\zone_crystal.png" />
+    <None Remove="Resources\zone_gems.png" />
+    <None Remove="Resources\zone_gold.png" />
+    <None Remove="Resources\zone_mercury.png" />
+    <None Remove="Resources\zone_monster_avg.png" />
+    <None Remove="Resources\zone_monster_none.png" />
+    <None Remove="Resources\zone_monster_strong.png" />
+    <None Remove="Resources\zone_monster_weak.png" />
+    <None Remove="Resources\zone_ore.png" />
+    <None Remove="Resources\zone_sulfur.png" />
+    <None Remove="Resources\zone_treasure.png" />
+    <None Remove="Resources\zone_wood.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="rmgeditor.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\neutral_castle.png" />
+    <Resource Include="Resources\Images\neutral_town.png" />
+    <Resource Include="Resources\Images\player1_castle.png" />
+    <Resource Include="Resources\Images\player1_town.png" />
+    <Resource Include="Resources\Images\player2_castle.png" />
+    <Resource Include="Resources\Images\player2_town.png" />
+    <Resource Include="Resources\Images\player3_castle.png" />
+    <Resource Include="Resources\Images\player3_town.png" />
+    <Resource Include="Resources\Images\player4_castle.png" />
+    <Resource Include="Resources\Images\player4_town.png" />
+    <Resource Include="Resources\Images\player5_castle.png" />
+    <Resource Include="Resources\Images\player5_town.png" />
+    <Resource Include="Resources\Images\player6_castle.png" />
+    <Resource Include="Resources\Images\player6_town.png" />
+    <Resource Include="Resources\Images\player7_castle.png" />
+    <Resource Include="Resources\Images\player7_town.png" />
+    <Resource Include="Resources\Images\player8_castle.png" />
+    <Resource Include="Resources\Images\player8_town.png" />
+    <Resource Include="Resources\Images\zone_crystal.png" />
+    <Resource Include="Resources\Images\zone_gems.png" />
+    <Resource Include="Resources\Images\zone_gold.png" />
+    <Resource Include="Resources\Images\zone_mercury.png" />
+    <Resource Include="Resources\Images\zone_monster_avg.png" />
+    <Resource Include="Resources\Images\zone_monster_none.png" />
+    <Resource Include="Resources\Images\zone_monster_strong.png" />
+    <Resource Include="Resources\Images\zone_monster_weak.png" />
+    <Resource Include="Resources\Images\zone_ore.png" />
+    <Resource Include="Resources\Images\zone_sulfur.png" />
+    <Resource Include="Resources\Images\zone_treasure.png" />
+    <Resource Include="Resources\Images\zone_wood.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HotaRmgTemplateEditor.Domain\HotaRmgTemplateEditor.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

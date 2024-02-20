@@ -1,0 +1,320 @@
+﻿<Window x:Class="HotaRmgTemplateEditor.Dialogs.AddEditTownTypeHint"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HotaRmgTemplateEditor.Dialogs" 
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
+        xmlns:viewmodels="clr-namespace:HotaRmgTemplateEditor.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:AddEditTownTypeHintViewModel}"
+        mc:Ignorable="d"
+        Title="Town type hint settings" Height="258" Width="590">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="RadioButton">
+                <Setter Property="Margin" Value="4,2"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <RadioButton Content="Use same type pattern as zone" IsChecked="{Binding IsSameAsZoneHint}"></RadioButton>
+            <RadioButton Content="No town type in common with zone" IsChecked="{Binding IsDifferentFromZoneHint}"></RadioButton>
+            <RadioButton Content="All towns are related with town of zone" IsChecked="{Binding IsAllTownsRelatedToZoneHint}"></RadioButton>
+            <RadioButton Content="Town has different type than towns of zone" IsChecked="{Binding IsTownDifferentAsTownsInZoneHint}"></RadioButton>
+            <RadioButton Content="Town 1 is related with town 2 of zone" IsChecked="{Binding IsTownRelatesToOtherTownInZoneHint}"></RadioButton>
+        </StackPanel>
+        
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Settings">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsSameAsZoneHint}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">Referenced zone ID:</Label>
+                <xctk:IntegerUpDown Grid.Row="0" Grid.Column="1" Increment="1" Minimum="1" Value="{Binding TargetZoneId}"></xctk:IntegerUpDown>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Settings">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsDifferentFromZoneHint}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">Referenced zone ID:</Label>
+                <xctk:IntegerUpDown Grid.Row="0" Grid.Column="1" Increment="1" Minimum="1" Value="{Binding TargetZoneId}"></xctk:IntegerUpDown>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Settings">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsAllTownsRelatedToZoneHint}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"  Grid.Column="0">Relation:</Label>
+                <ComboBox Grid.Row="0" Grid.Column="1" Width="Auto"
+                          ItemsSource="{Binding Path=TownTypeRelationEnumsWithCaption}" 
+                          DisplayMemberPath="Value" 
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding Path=TownTypeRelation, Mode=TwoWay}"/>
+                <Label Grid.Row="1"  Grid.Column="0">Town:</Label>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Neutral town</Label>
+                    <xctk:IntegerUpDown Width="50" VerticalAlignment="Center" Increment="1" Minimum="1" Value="{Binding Town1Id}">
+                        <xctk:IntegerUpDown.Style>
+                            <Style TargetType="xctk:IntegerUpDown">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Town1IsAllPlayerTowns}" Value="true">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </xctk:IntegerUpDown.Style>
+                    </xctk:IntegerUpDown>
+                    <Label VerticalAlignment="Center" FontWeight="Bold">/</Label>
+                    <CheckBox VerticalAlignment="Center" Content="All player towns" IsChecked="{Binding Town1IsAllPlayerTowns}"/>
+                </StackPanel>
+                <Label Grid.Row="2"  Grid.Column="0">Zone:</Label>
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Zone ID</Label>
+                    <xctk:IntegerUpDown VerticalAlignment="Center" Width="50" Increment="1" Minimum="1" Value="{Binding TargetZoneId}">
+                        <xctk:IntegerUpDown.Style>
+                            <Style TargetType="xctk:IntegerUpDown">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding TargetZoneIsCurrentZone}" Value="true">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </xctk:IntegerUpDown.Style>
+                    </xctk:IntegerUpDown>
+                    <Label VerticalAlignment="Center" FontWeight="Bold">/</Label>
+                    <CheckBox VerticalAlignment="Center" Content="Current zone" IsChecked="{Binding TargetZoneIsCurrentZone}" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Settings">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsTownDifferentAsTownsInZoneHint}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"  Grid.Column="0">Town:</Label>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Neutral town</Label>
+                    <xctk:IntegerUpDown Width="50" VerticalAlignment="Center" Increment="1" Minimum="1" Value="{Binding Town1Id}">
+                        <xctk:IntegerUpDown.Style>
+                            <Style TargetType="xctk:IntegerUpDown">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Town1IsAllPlayerTowns}" Value="true">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </xctk:IntegerUpDown.Style>
+                    </xctk:IntegerUpDown>
+                    <Label VerticalAlignment="Center" FontWeight="Bold">/</Label>
+                    <CheckBox VerticalAlignment="Center" Content="All player towns" IsChecked="{Binding Town1IsAllPlayerTowns}"/>
+                </StackPanel>
+                <Label Grid.Row="1"  Grid.Column="0">Zone:</Label>
+                <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Zone ID</Label>
+                    <xctk:IntegerUpDown VerticalAlignment="Center" Width="50" Increment="1" Minimum="1" Value="{Binding TargetZoneId}">
+                        <xctk:IntegerUpDown.Style>
+                            <Style TargetType="xctk:IntegerUpDown">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding TargetZoneIsCurrentZone}" Value="true">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </xctk:IntegerUpDown.Style>
+                    </xctk:IntegerUpDown>
+                    <Label VerticalAlignment="Center" FontWeight="Bold">/</Label>
+                    <CheckBox VerticalAlignment="Center" Content="Current zone" IsChecked="{Binding TargetZoneIsCurrentZone}"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="0" Grid.Column="1" Header="Settings">
+            <GroupBox.Style>
+                <Style TargetType="GroupBox">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsTownRelatesToOtherTownInZoneHint}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </GroupBox.Style>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0"  Grid.Column="0">Town 1:</Label>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Neutral town</Label>
+                    <xctk:IntegerUpDown Width="50" VerticalAlignment="Center" Increment="1" Minimum="1" Value="{Binding Town1Id}">
+                        <xctk:IntegerUpDown.Style>
+                            <Style TargetType="xctk:IntegerUpDown">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Town1IsAllPlayerTowns}" Value="true">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </xctk:IntegerUpDown.Style>
+                    </xctk:IntegerUpDown>
+                    <Label VerticalAlignment="Center" FontWeight="Bold">/</Label>
+                    <CheckBox VerticalAlignment="Center" Content="All player towns" IsChecked="{Binding Town1IsAllPlayerTowns}"/>
+                </StackPanel>
+                <Label Grid.Row="1"  Grid.Column="0">Relation:</Label>
+                <ComboBox Grid.Row="1" Grid.Column="1" 
+                          ItemsSource="{Binding Path=TownTypeRelationEnumsWithCaption}" 
+                          DisplayMemberPath="Value" 
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding Path=TownTypeRelation, Mode=TwoWay}"/>
+                <Label Grid.Row="2"  Grid.Column="0">Town 2:</Label>
+                <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Neutral town</Label>
+                    <xctk:IntegerUpDown Width="50" VerticalAlignment="Center" Increment="1" Minimum="1" Value="{Binding Town2Id}">
+                        <xctk:IntegerUpDown.Style>
+                            <Style TargetType="xctk:IntegerUpDown">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Town2IsAllPlayerTowns}" Value="true">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </xctk:IntegerUpDown.Style>
+                    </xctk:IntegerUpDown>
+                    <Label VerticalAlignment="Center" FontWeight="Bold">/</Label>
+                    <CheckBox VerticalAlignment="Center" Content="All player towns" IsChecked="{Binding Town2IsAllPlayerTowns}" />
+                </StackPanel>
+                <Label Grid.Row="3"  Grid.Column="0">Zone:</Label>
+                <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center">Zone ID</Label>
+                    <xctk:IntegerUpDown VerticalAlignment="Center" Width="50" Increment="1" Minimum="1" Value="{Binding TargetZoneId}">
+                        <xctk:IntegerUpDown.Style>
+                            <Style TargetType="xctk:IntegerUpDown">
+                                <Setter Property="IsEnabled" Value="True"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding TargetZoneIsCurrentZone}" Value="true">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </xctk:IntegerUpDown.Style>
+                    </xctk:IntegerUpDown>
+                    <Label VerticalAlignment="Center" FontWeight="Bold">/</Label>
+                    <CheckBox VerticalAlignment="Center" Content="Current zone" IsChecked="{Binding TargetZoneIsCurrentZone}" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0">Formula: </Label>
+            <Label Grid.Row="0" Grid.Column="1" FontWeight="SemiBold" Content="{Binding HintFormula}" />
+            <Label Grid.Row="1" Grid.Column="0">Description:</Label>
+            <Label Grid.Row="1" Grid.Column="1" FontWeight="SemiBold" Content="{Binding HintDescription}" />
+        </Grid>
+        
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="4,0" Padding="6,3" Content="Ok" Click="OkButton_Click" />
+            <Button Margin="4,0" Padding="6,3" Content="Cancel" Click="CancelButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="HotaRmgTemplateEditor.UserControls.Template"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HotaRmgTemplateEditor.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ContextMenu x:Key="connectionContextMenu">
+                <MenuItem Header="Edit connection..." Click="EditConnectionMenuItem_Click"/>
+            </ContextMenu>
+            <Style TargetType="local:Template">
+                <Setter Property="ActiveTemplate" Value="{Binding}"/>
+                <Setter Property="CurrentScale" Value="{Binding CurrentScale, NotifyOnTargetUpdated=True}" />
+            </Style>
+            
+            <Style x:Key="BasicConnection" TargetType="Line">
+                <Style.Setters>
+                    <Setter Property="StrokeThickness" Value="2" />
+                    <Setter Property="Stroke" Value="Black"/>
+                </Style.Setters>
+            </Style>
+            <Style x:Key="FictiveConnection" TargetType="Line">
+                <Style.Setters>
+                    <Setter Property="StrokeDashArray" Value="1 1"/>
+                    <Setter Property="StrokeThickness" Value="2" />
+                    <Setter Property="Stroke" Value="Gray"/>
+                </Style.Setters>
+            </Style>
+            <Style x:Key="WideConnection" TargetType="Line">
+                <Style.Setters>
+                    <Setter Property="StrokeThickness" Value="8" />
+                    <Setter Property="Stroke" Value="Gray" />
+                </Style.Setters>
+            </Style>
+            <Style x:Key="WideConnectionNoRoad" TargetType="Line">
+                <Style.Setters>
+                    <Setter Property="StrokeThickness" Value="8" />
+                    <Setter Property="Stroke" Value="Gray" />
+                    <Setter Property="StrokeDashArray" Value="6 3" />
+                </Style.Setters>
+            </Style>
+            <Style x:Key="ForcedRoadConnectionBase" TargetType="Line">
+                <Setter Property="StrokeThickness" Value="4" />
+                <Setter Property="Stroke" Value="Black"/>
+            </Style>
+            <Style x:Key="ForcedRoadConnectionTop" TargetType="Line">
+                <Setter Property="StrokeThickness" Value="3" />
+                <Setter Property="Stroke" Value="White" />
+                <Setter Property="StrokeDashArray" Value="3 3" />
+            </Style>
+            <Style x:Key="ForcedNoRoadConnection" TargetType="Line">
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="Stroke" Value="Black" />
+                <Setter Property="StrokeDashArray" Value="6 3" />
+            </Style>
+            <Style x:Key="ConditionalConnection" TargetType="Line">
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="Stroke" Value="Goldenrod"/>
+            </Style>
+            <Style x:Key="MirrorConnection" TargetType="Line">
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="Stroke" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="container">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Canvas x:Name="canvas" Background="White"
+                    MouseDown="Canvas_MouseDown" MouseUp="Canvas_MouseUp" 
+                    MouseMove="Canvas_MouseMove" MouseWheel="Canvas_MouseWheel">
+                <!--<Canvas.Background>
+                    <DrawingBrush TileMode="Tile" Viewport="-10,-10,140,140" 
+                                     ViewportUnits="Absolute">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing>
+                                <GeometryDrawing.Geometry>
+                                    <RectangleGeometry Rect="0,0,200,200"/>
+                                </GeometryDrawing.Geometry>
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="LightGray" Thickness="1"/>
+                                </GeometryDrawing.Pen>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Canvas.Background>-->
+            </Canvas>
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>

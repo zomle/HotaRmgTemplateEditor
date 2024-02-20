@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <BitmapImage x:Key="MonsterNone" UriSource="/Resources/Images/zone_monster_none.png" />
+    <BitmapImage x:Key="MonsterWeak" UriSource="/Resources/Images/zone_monster_weak.png" />
+    <BitmapImage x:Key="MonsterAvg" UriSource="/Resources/Images/zone_monster_avg.png" />
+    <BitmapImage x:Key="MonsterStrong" UriSource="/Resources/Images/zone_monster_strong.png" />
+
+    <!-- Zone items -->
+    <BitmapImage x:Key="TreasureChest" UriSource="/Resources/Images/zone_treasure.png" />
+    <BitmapImage x:Key="Wood" UriSource="/Resources/Images/zone_wood.png" />
+    <BitmapImage x:Key="Ore" UriSource="/Resources/Images/zone_ore.png" />
+    <BitmapImage x:Key="Mercury" UriSource="/Resources/Images/zone_mercury.png" />
+    <BitmapImage x:Key="Sulfur" UriSource="/Resources/Images/zone_sulfur.png" />
+    <BitmapImage x:Key="Crystal" UriSource="/Resources/Images/zone_crystal.png" />
+    <BitmapImage x:Key="Gems" UriSource="/Resources/Images/zone_gems.png" />
+    <BitmapImage x:Key="Gold" UriSource="/Resources/Images/zone_gold.png" />
+
+    <BitmapImage x:Key="NeutralTown"   UriSource="/Resources/Images/neutral_town.png" />
+    <BitmapImage x:Key="NeutralCastle" UriSource="/Resources/Images/neutral_castle.png" />
+    <BitmapImage x:Key="Player1Town"   UriSource="/Resources/Images/player1_town.png" />
+    <BitmapImage x:Key="Player1Castle" UriSource="/Resources/Images/player1_castle.png" />
+    <BitmapImage x:Key="Player2Town"   UriSource="/Resources/Images/player2_town.png" />
+    <BitmapImage x:Key="Player2Castle" UriSource="/Resources/Images/player2_castle.png" />
+    <BitmapImage x:Key="Player3Town"   UriSource="/Resources/Images/player3_town.png" />
+    <BitmapImage x:Key="Player3Castle" UriSource="/Resources/Images/player3_castle.png" />
+    <BitmapImage x:Key="Player4Town"   UriSource="/Resources/Images/player4_town.png" />
+    <BitmapImage x:Key="Player4Castle" UriSource="/Resources/Images/player4_castle.png" />
+    <BitmapImage x:Key="Player5Town"   UriSource="/Resources/Images/player5_town.png" />
+    <BitmapImage x:Key="Player5Castle" UriSource="/Resources/Images/player5_castle.png" />
+    <BitmapImage x:Key="Player6Town"   UriSource="/Resources/Images/player6_town.png" />
+    <BitmapImage x:Key="Player6Castle" UriSource="/Resources/Images/player6_castle.png" />
+    <BitmapImage x:Key="Player7Town"   UriSource="/Resources/Images/player7_town.png" />
+    <BitmapImage x:Key="Player7Castle" UriSource="/Resources/Images/player7_castle.png" />
+    <BitmapImage x:Key="Player8Town"   UriSource="/Resources/Images/player8_town.png" />
+    <BitmapImage x:Key="Player8Castle" UriSource="/Resources/Images/player8_castle.png" />
+</ResourceDictionary>
