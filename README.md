@@ -1,5 +1,7 @@
 # Unofficial HOTA Rmg Template Editor (for HOTA 1.6.1)
 
+THIS PROJECT IS UNFINISHED.
+
 Decided to reimplement the rmg template editor provided by Hota (1.6.1), because it didn't support mirror templates, and also thought there were some UX issues with it.
 Spent around 3 weeks of work on the project in December 2023, when suddenly on 31th December 2023 the Hota team released 1.7 with changes and updates to the rmg template editor as well.
 
